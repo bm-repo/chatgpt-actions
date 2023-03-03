@@ -51,7 +51,7 @@ def generate_review():
                 response = openai.Completion.create(
                     engine=openai_engine,
                     prompt=(
-                        f"Provide code review for the following code as Pull Request reviewer:\n```{content}```"),
+                        f"Provide code review for the following code as Pull Request reviewer in bullet points:\n```{content}```"),
                     temperature=openai_temperature,
                     max_tokens=openai_max_tokens,
                     best_of=openai_best_of,
@@ -61,7 +61,7 @@ def generate_review():
     
                 # Adding a comment to the pull request with ChatGPT's response
                 print(response['choices'])
-                review_comment = '\n\n'.join( [ x['text'] for x in response['choices'] ] )
+                review_comment = '\n'.join( [ x['text'] for x in response['choices'] ] )
 
                 pull_request.create_issue_comment(f'<img src="https://raw.githubusercontent.com/allabakashb/SampleJSON/main/logo.png" width="100px"><div>You can improve the code quality by following suggestions for <b>{file.filename}</b>:{review_comment}</div>')
                 time.sleep(10)
