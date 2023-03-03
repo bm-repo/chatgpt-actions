@@ -57,7 +57,7 @@ def generate_testcases():
                 response = openai.Completion.create(
                     engine=openai_engine,
                     prompt=(
-                        f"Generate unit tests for following code using {testing_framework}:\n```{content}```"),
+                        f"Generate unit tests for following code using {testing_framework}:\n{content}"),
                     temperature=openai_temperature,
                     max_tokens=openai_max_tokens
                 )
