@@ -13,6 +13,7 @@ openai.api_key = os.getenv('OPENAPI_KEY')
 openai_engine = 'text-davinci-003'
 openai_temperature = 0.5
 openai_max_tokens = 2048
+openai_best_of = 20
 
 g = Github(os.getenv('GIT_TOKEN'))
 
@@ -59,7 +60,8 @@ def generate_testcases():
                     prompt=(
                         f"Generate unit tests for following code using {testing_framework}:\n{content}"),
                     temperature=openai_temperature,
-                    max_tokens=openai_max_tokens
+                    max_tokens=openai_max_tokens,
+                    best_of=openai_best_of
                 )
                 
                 print(f'test cases generated for "{filename}": \n',  {
