@@ -14,6 +14,8 @@ openai_engine = 'text-davinci-003'
 openai_temperature = 0.0
 openai_max_tokens = 2048
 openai_best_of = 6
+frequency_penalty = 5
+presence_penalty = 1
 
 g = Github(os.getenv('GIT_TOKEN'))
 
@@ -48,10 +50,12 @@ def generate_review():
                 response = openai.Completion.create(
                     engine=openai_engine,
                     prompt=(
-                        f"How can i improve following code in terms of best practices, security and vulnerabilities:\n```{content}```"),
+                        f"Provide code review for the following code as Pull Request reviewer:\n```{content}```"),
                     temperature=openai_temperature,
                     max_tokens=openai_max_tokens,
-                    best_of=openai_best_of
+                    best_of=openai_best_of,
+                    frequency_penalty=frequency_penalty,
+                    presence_penalty=presence_penalty
                 )
     
                 # Adding a comment to the pull request with ChatGPT's response
