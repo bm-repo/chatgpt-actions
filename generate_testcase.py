@@ -12,7 +12,7 @@ from github import Github
 # Authenticating with the OpenAI API
 openai.api_key = os.getenv('OPENAPI_KEY')
 openai_engine = 'text-davinci-003'
-openai_temperature = 0.5
+openai_temperature = 0.0
 openai_max_tokens = 2048
 openai_best_of = 5
 
