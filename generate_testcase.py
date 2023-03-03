@@ -6,6 +6,7 @@ import os
 import requests
 import glob
 import os
+import json
 from github import Github
 
 # Authenticating with the OpenAI API
@@ -63,7 +64,9 @@ def generate_testcases():
                     max_tokens=openai_max_tokens,
                     best_of=openai_best_of
                 )
-                
+        
+                print(json.dumps(response['choices']))
+
                 print(f'test cases generated for "{filename}": \n',  {
                     response['choices'][0]['text']})
                 
