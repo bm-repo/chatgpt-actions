@@ -48,7 +48,7 @@ def generate_review():
                 response = openai.Completion.create(
                     engine=openai_engine,
                     prompt=(
-                        f"Review the following code in terms of best practices:\n```{content}```"),
+                        f"How can i improve following code in terms of best practices, security and vulnerabilities:\n```{content}```"),
                     temperature=openai_temperature,
                     max_tokens=openai_max_tokens,
                     best_of=openai_best_of
