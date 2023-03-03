@@ -45,12 +45,19 @@ def generate_testcases():
 
                 seen_files.add(filename)
                 content = repo.get_contents(filename, ref=commit.sha).decoded_content
+                
+                testing_framework = 'pytest'
+                
+                if '.java' in filename:
+                    testing_framework = 'JUnit'
+                elif '.tsx' in filename or '.js' in filename or '.jsx' in filename or '.ts' in filename:
+                    testing_framework = 'Jest'
  
                 # Sending the code to ChatGPT from here
                 response = openai.Completion.create(
                     engine=openai_engine,
                     prompt=(
-                        f"Generate unit tests for following code:\n```{content}```"),
+                        f"Generate unit tests for following code using {testing_framework}:\n```{content}```"),
                     temperature=openai_temperature,
                     max_tokens=openai_max_tokens
                 )
