@@ -14,7 +14,7 @@ openai.api_key = os.getenv('OPENAPI_KEY')
 openai_engine = 'text-davinci-003'
 openai_temperature = 0.5
 openai_max_tokens = 2048
-openai_best_of = 20
+openai_best_of = 5
 
 g = Github(os.getenv('GIT_TOKEN'))
 
