@@ -11,8 +11,9 @@ from github import Github
 # Authenticating with the OpenAI API
 openai.api_key = os.getenv('OPENAPI_KEY')
 openai_engine = 'text-davinci-003'
-openai_temperature = 0.5
+openai_temperature = 0.0
 openai_max_tokens = 2048
+openai_best_of = 6
 
 g = Github(os.getenv('GIT_TOKEN'))
 
@@ -49,7 +50,8 @@ def generate_review():
                     prompt=(
                         f"Review the following code in terms of best practices:\n```{content}```"),
                     temperature=openai_temperature,
-                    max_tokens=openai_max_tokens
+                    max_tokens=openai_max_tokens,
+                    best_of=openai_best_of
                 )
     
                 # Adding a comment to the pull request with ChatGPT's response
