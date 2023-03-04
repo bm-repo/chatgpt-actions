@@ -64,7 +64,7 @@ def generate_review():
                 review_comment = '\n\n'.join( [ x['text'] for x in response['choices'] ] )
 
                 pull_request.create_issue_comment(f'<img src="https://raw.githubusercontent.com/allabakashb/SampleJSON/main/logo.png" width="100px"><div>You can improve the code quality by following suggestions for <b>{file.filename}</b>:{review_comment}</div>')
-                time.sleep(60)
+                time.sleep(30)
     except Exception as ex:
         print('exception generated', ex.args)
 
