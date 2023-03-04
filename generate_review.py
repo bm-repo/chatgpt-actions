@@ -63,7 +63,7 @@ def generate_review():
                 print(response['choices'])
                 review_comment = '\n\n'.join( [ x['text'] for x in response['choices'] ] )
 
-                pull_request.create_issue_comment(f'<div><img src="https://raw.githubusercontent.com/allabakashb/SampleJSON/main/logo.png" width="100px"><div>You can improve the code quality by following suggestions for <b>{file.filename}</b>:{review_comment}</div><div><span style="background-color: #4CAF50;color:#fffff;margin: 5px;height: 30px; width: 300px;">Good suggestion</span><span style="background-color: #f44336;color:#fffff;margin: 5px;height: 30px; width: 300px;">Incorrect/bad suggestion</span></div></div>')
+                pull_request.create_issue_comment(f'<div><img src="https://raw.githubusercontent.com/allabakashb/SampleJSON/main/logo.png" width="100px"><div>You can improve the code quality by following suggestions for <b>{file.filename}</b>:{review_comment}</div><div>> [Good suggestion✅]()  \n--\n> [Incorrect/bad suggestion❌]()</div></div>')
                 time.sleep(30)
     except Exception as ex:
         print('exception generated', ex.args)
