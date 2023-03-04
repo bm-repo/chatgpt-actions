@@ -51,7 +51,7 @@ def generate_review():
                 response = openai.Completion.create(
                     engine=openai_engine,
                     prompt=(
-                        f"Provide code review for the following code as Pull Request reviewer in bullet points:\n```{content}```"),
+                        f"Provide code review for the following code as Pull Request reviewer:\n```{content}```"),
                     temperature=openai_temperature,
                     max_tokens=openai_max_tokens,
                     best_of=openai_best_of,
