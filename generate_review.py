@@ -65,6 +65,8 @@ def generate_review():
             
                 review_comment = re.sub("\d[a-zA-Z]\.\)", "9.", review_comment)
                 review_comment = re.sub("\t\s*9\.", "\n\n9.", review_comment)
+                review_comment = re.sub("\s\.", ". ", review_comment)
+                review_comment = re.sub("\n", "\n\n", review_comment)
 
                 print(json.dumps(response['choices'],indent=4))
                 formatted_comment = f'<img src="https://raw.githubusercontent.com/allabakashb/SampleJSON/main/logo.png" width="100px"><div>You can improve the code quality by following suggestions for <b>{file.filename}</b>:{review_comment}</div>\n\n| [Good suggestion✅]()|[Incorrect/bad suggestion ❌]()|\n| ----------------------------------------------------- | ---------------------------------------------- |'
