@@ -8,6 +8,7 @@ import glob
 import os
 from github import Github
 import time
+import json
 
 # Authenticating with the OpenAI API
 openai.api_key = os.getenv('OPENAPI_KEY')
@@ -62,6 +63,7 @@ def generate_review():
                 # Adding a comment to the pull request with ChatGPT's response
                 review_comment = '\n\n'.join( [ x['text'] for x in response['choices'] ] )
 
+                print(json.dumps(response['choices'],indent=4))
                 formatted_comment = f'<img src="https://raw.githubusercontent.com/allabakashb/SampleJSON/main/logo.png" width="100px"><div>You can improve the code quality by following suggestions for <b>{file.filename}</b>:{review_comment}</div>\n\n| [Good suggestion✅]()|[Incorrect/bad suggestion ❌]()|\n| ----------------------------------------------------- | ---------------------------------------------- |'
                 pull_request.create_issue_comment(formatted_comment)
                 print(formatted_comment)
