@@ -62,7 +62,7 @@ def generate_review():
                 # Adding a comment to the pull request with ChatGPT's response
                 review_comment = '\n\n'.join( [ x['text'] for x in response['choices'] ] )
 
-                formatted_comment = '<img src="https://raw.githubusercontent.com/allabakashb/SampleJSON/main/logo.png" width="100px"><div>You can improve the code quality by following suggestions for <b>{file.filename}</b>:{review_comment}</div>\n--\n> [Good suggestion✅]()  \n--\n> [Incorrect/bad suggestion❌]()'
+                formatted_comment = '<img src="https://raw.githubusercontent.com/allabakashb/SampleJSON/main/logo.png" width="100px"><div>You can improve the code quality by following suggestions for <b>{file.filename}</b>:{review_comment}</div>\n> [Good suggestion✅]()  \n--\n> [Incorrect/bad suggestion❌]()'
                 pull_request.create_issue_comment(f'${formatted_comment}')
                 print(f'${formatted_comment}')
                 time.sleep(30)
