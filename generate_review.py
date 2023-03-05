@@ -72,7 +72,7 @@ def generate_review():
                 formatted_comment = f'<img src="https://raw.githubusercontent.com/allabakashb/SampleJSON/main/logo.png" width="100px"><div>You can improve the code quality by following suggestions for <b>{file.filename}</b>:{review_comment}</div>\n\n| [Good suggestion✅]()|[Incorrect/bad suggestion ❌]()|\n| ----------------------------------------------------- | ---------------------------------------------- |'
                 pull_request.create_issue_comment(formatted_comment)
                 print(formatted_comment)
-                time.sleep(30)
+                time.sleep(60)
     except Exception as ex:
         print('exception generated', ex.args)
 
